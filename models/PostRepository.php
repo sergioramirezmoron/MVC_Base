@@ -47,4 +47,15 @@ class PostRepository
             return false;
         }
     }
+
+    public static function updatePost($id, $title, $content)
+    {
+        $db = Connection::connect();
+        $q = "UPDATE post SET title='$title', content='$content' WHERE id=" . $id;
+        if ($result = $db->query($q)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

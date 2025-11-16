@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpdatePost</title>
+</head>
+
+<body>
+    <h1>Update Post</h1>
+    <form action="index.php?c=post&updatePost=<?php echo $post->getId() ?>" method="POST">
+        <input type="text" name="title" placeholder="Titulo" value=<?php echo $post->getTitle() ?>>
+        <textarea name="content" placeholder="Contenido"><?php echo $post->getContent() ?></textarea>
+        <input type="submit" value="Update Post">
+    </form>
+    <a href="index.php">Volver</a>
+</body>
+
+</html>

@@ -4,6 +4,7 @@
 if (isset($_GET['logout'])) {
     $_SESSION['user'] = false;
     header('location:index.php');
+    exit;
 }
 
 //Register
@@ -26,6 +27,7 @@ if (isset($_GET['register'])) {
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $_SESSION["user"] = UserRepository::login($_POST['username'], $_POST['password']);
     header('location:index.php');
+    exit;
 }
 
 //Default view

@@ -34,6 +34,7 @@
     if ($_SESSION["user"]->getRol() || $_SESSION["user"]->getId() === $post->getAuthor()->getId()) {
     ?>
         <a href="index.php?c=post&deletePost=<?php echo $post->getId() ?>">Borrar</a>
+        <a href="index.php?c=post&updatePost=<?php echo $post->getId() ?>">Actualizar</a>
     <?php
     }
     ?>
