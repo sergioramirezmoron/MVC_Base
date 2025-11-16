@@ -3,8 +3,10 @@
 //cargar modelo
 require_once('models/User.php');
 require_once('models/Post.php');
+require_once('models/Comment.php');
 require_once('models/UserRepository.php');
 require_once('models/PostRepository.php');
+require_once('models/CommentRepository.php');
 
 session_start();
 //consultas a la base de datos

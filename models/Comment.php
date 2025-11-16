@@ -1,34 +1,29 @@
 <?php
 
-class Post
+class Comment
 {
 
     private $id;
-    private $title;
     private $content;
     private $date;
     private $visible;
     private $idAuthor;
+    private $idPost;
 
 
-    public function __construct($id, $title, $content, $date, $visible,  $idAuthor)
+    public function __construct($id, $content, $date, $visible,  $idAuthor, $idPost)
     {
         $this->id = $id;
-        $this->title = $title;
         $this->content = $content;
         $this->date = $date;
         $this->visible = $visible;
         $this->idAuthor = $idAuthor;
+        $this->idPost = $idPost;
     }
 
     public function getId()
     {
         return $this->id;
-    }
-
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     public function getContent()
@@ -51,8 +46,8 @@ class Post
         return UserRepository::getUserById($this->idAuthor);
     }
 
-    public function getComments()
+    public function getIdPost()
     {
-        return CommentRepository::getCommentsByPostId($this->getId());
+        return $this->idPost;
     }
 }

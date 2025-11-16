@@ -12,9 +12,21 @@
     echo '<h1>' . $post->getTitle() . '</h1>';
     echo '<p>' . $post->getContent() . '</p>';
     echo '<p>' . $post->getDate() . '</p>';
-    echo '<p>' . UserRepository::getUserById($post->getIdAuthor())->getUsername() . '</p>';
+    echo '<p>' . $post->getIdAuthor()->getUsername() . '</p>';
     ?>
+    <h3>Comentarios</h3>
     <?php
+    // Mostrar comentarios
+    foreach ($post->getComments() as $comment) {
+        if ($comment->getVisible()) {;
+            echo '<p>(' . $comment->getDate() . ') ' . $comment->getIdAuthor()->getUsername() . ': ' . $comment->getContent() . '</p>';
+            if ($_SESSION["user"]->getRol() || $_SESSION["user"]->getId() === $comment->getIdAuthor()) {
+                echo '<a href="index.php?c=comment&id=' . $post->getId() . '&deleteComment=' . $comment->getId() . '">Borrar Comentario</a>';
+            }
+        }
+    }
+
+    // Acciones de borrar y volver
     if ($_SESSION["user"]->getRol() || $_SESSION["user"]->getId() === $post->getIdAuthor()) {
     ?>
         <a href="index.php?c=post&deletePost=<?php echo $post->getId() ?>">Borrar</a>
