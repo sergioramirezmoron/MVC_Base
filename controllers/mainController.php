@@ -21,9 +21,8 @@ if (isset($_GET['c'])) {
     if (!($_SESSION['user'])) {
         require_once('controllers/userController.php');
     } else {
-        /*$categories = CategoryRepository::getCategories();
-        $topics = TopicRepository::getTopics();
-        */
+        //$categories = CategoryRepository::getCategories();
+        //$topics = TopicRepository::getTopics();
         require_once('views/mainView.phtml');
     }
 }

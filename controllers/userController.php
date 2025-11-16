@@ -7,11 +7,6 @@ if (isset($_GET['logout'])) {
 }
 
 //Register
-if (isset($_GET['register'])) {
-    require_once('views/registerView.phtml');
-    exit;
-}
-
 if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['password2'])) {
     if (UserRepository::register($_POST["username"], $_POST["password"], $_POST["password2"])) {
         require_once('views/loginView.phtml');
@@ -19,6 +14,11 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['pass
     } else {
         require_once('views/registerView.phtml');
     }
+    exit;
+}
+
+if (isset($_GET['register'])) {
+    require_once('views/registerView.phtml');
     exit;
 }
 
