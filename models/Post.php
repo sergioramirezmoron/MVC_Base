@@ -46,7 +46,7 @@ class Post
         return $this->visible;
     }
 
-    public function getIdAuthor()
+    public function getAuthor()
     {
         return UserRepository::getUserById($this->idAuthor);
     }

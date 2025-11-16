@@ -12,22 +12,26 @@
     echo '<h1>' . $post->getTitle() . '</h1>';
     echo '<p>' . $post->getContent() . '</p>';
     echo '<p>' . $post->getDate() . '</p>';
-    echo '<p>' . $post->getIdAuthor()->getUsername() . '</p>';
+    echo '<p>' . $post->getAuthor()->getUsername() . '</p>';
     ?>
     <h3>Comentarios</h3>
+    <form action="index.php?c=comment&createComment=1&id=<?php echo $post->getId() ?>" method="POST">
+        <input type="text" name="content" placeholder="Comentario">
+        <input type="submit" value="Comentar">
+    </form>
     <?php
     // Mostrar comentarios
     foreach ($post->getComments() as $comment) {
         if ($comment->getVisible()) {;
-            echo '<p>(' . $comment->getDate() . ') ' . $comment->getIdAuthor()->getUsername() . ': ' . $comment->getContent() . '</p>';
-            if ($_SESSION["user"]->getRol() || $_SESSION["user"]->getId() === $comment->getIdAuthor()) {
+            echo '<p>(' . $comment->getDate() . ') ' . $comment->getAuthor()->getUsername() . ': ' . $comment->getContent() . '</p>';
+            if ($_SESSION["user"]->getRol() || $_SESSION["user"]->getId() === $comment->getAuthor()->getId()) {
                 echo '<a href="index.php?c=comment&id=' . $post->getId() . '&deleteComment=' . $comment->getId() . '">Borrar Comentario</a>';
             }
         }
     }
 
     // Acciones de borrar y volver
-    if ($_SESSION["user"]->getRol() || $_SESSION["user"]->getId() === $post->getIdAuthor()) {
+    if ($_SESSION["user"]->getRol() || $_SESSION["user"]->getId() === $post->getAuthor()->getId()) {
     ?>
         <a href="index.php?c=post&deletePost=<?php echo $post->getId() ?>">Borrar</a>
     <?php

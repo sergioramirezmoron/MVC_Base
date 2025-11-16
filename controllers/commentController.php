@@ -8,5 +8,5 @@ if (isset($_GET['deleteComment'])) {
 // addComment
 if (isset($_POST['content'])) {
     $id = CommentRepository::addComment($_POST['content']);
-    header('location:index.php?c=post&id=' . $_GET['idPost']);
+    header('location:index.php?c=post&id=' . $_GET['id']);
 }

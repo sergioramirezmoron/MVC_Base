@@ -8,8 +8,9 @@
 </head>
 
 <body>
+    <a href="index.php?c=post&createPost=1">Crear Post</a>
     <a href="index.php?c=user&logout=1">Logout</a>
-
+    <p>Hola <?php echo $_SESSION["user"]->getUsername() ?></p>
     <?php foreach ($posts as $post) {
         if ($post->getVisible()) {
             echo '<a href="index.php?c=post&id=' . $post->getId() . '"><h2>' . $post->getTitle() . '</h2></a>';

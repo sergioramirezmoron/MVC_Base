@@ -41,13 +41,13 @@ class Comment
         return $this->visible;
     }
 
-    public function getIdAuthor()
+    public function getAuthor()
     {
         return UserRepository::getUserById($this->idAuthor);
     }
 
-    public function getIdPost()
+    public function getPost()
     {
-        return $this->idPost;
+        return PostRepository::getPostById($this->idPost);
     }
 }
