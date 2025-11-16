@@ -2,7 +2,9 @@
 
 //cargar modelo
 require_once('models/User.php');
+require_once('models/Post.php');
 require_once('models/UserRepository.php');
+require_once('models/PostRepository.php');
 
 session_start();
 //consultas a la base de datos
@@ -22,7 +24,7 @@ if (isset($_GET['c'])) {
         require_once('controllers/userController.php');
     } else {
         //$categories = CategoryRepository::getCategories();
-        //$topics = TopicRepository::getTopics();
+        $posts = PostRepository::getPosts();
         require_once('views/mainView.phtml');
     }
 }

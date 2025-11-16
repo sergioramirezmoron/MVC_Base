@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostView</title>
+</head>
+
+<body>
+    <?php
+    echo '<h1>' . $post->getTitle() . '</h1>';
+    echo '<p>' . $post->getContent() . '</p>';
+    echo '<p>' . $post->getDate() . '</p>';
+    echo '<p>' . UserRepository::getUserById($post->getIdAuthor())->getUsername() . '</p>';
+    ?>
+    <?php
+    if ($_SESSION["user"]->getRol() || $_SESSION["user"]->getId() === $post->getIdAuthor()) {
+    ?>
+        <a href="index.php?c=post&deletePost=<?php echo $post->getId() ?>">Borrar</a>
+    <?php
+    }
+    ?>
+
+    <a href="index.php">Volver</a>
+</body>
+
+</html>
